@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>像素矿工 — 挖矿挂机微信小游戏</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Georgia', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: #0d0d0d;
+      color: #e0d5c0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
+    .bg {
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(139,69,19,.15) 0%, transparent 60%),
+        radial-gradient(ellipse at 50% 100%, rgba(25,200,185,.05) 0%, transparent 40%),
+        #0d0d0d;
+      z-index: -1;
+    }
+    .container { max-width: 640px; width: 100%; padding: 40px 24px; }
+    .header { text-align: center; margin-bottom: 40px; }
+    .header h1 { font-size: 32px; color: #c9a84c; letter-spacing: 4px; margin-bottom: 8px; }
+    .header p { color: #8899aa; font-size: 14px; letter-spacing: 2px; }
+    .card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(201,168,76,.15);
+      border-radius: 8px;
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+    .card h2 { font-size: 18px; color: #e8d5a3; margin-bottom: 12px; letter-spacing: 2px; }
+    .card p { font-size: 14px; color: #99aabb; line-height: 1.8; }
+    .card ul { list-style: none; padding: 0; }
+    .card li { padding: 8px 0; font-size: 14px; color: #99aabb; border-bottom: 1px solid rgba(255,255,255,.04); }
+    .card li:last-child { border: none; }
+    .card li span { color: #c9a84c; }
+    .badge {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin: 3px;
+    }
+    .badge-wx { background: rgba(7,193,96,.15); color: #07C160; border: 1px solid rgba(7,193,96,.3); }
+    .badge-gold { background: rgba(201,168,76,.15); color: #c9a84c; border: 1px solid rgba(201,168,76,.3); }
+    .btn {
+      display: inline-block;
+      padding: 12px 32px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-decoration: none;
+      transition: all .3s;
+      margin: 6px;
+    }
+    .btn-primary { background: #c9a84c; color: #1a1a2e; }
+    .btn-primary:hover { background: #e8d5a3; transform: translateY(-2px); }
+    .btn-outline { border: 1px solid #c9a84c; color: #e8d5a3; }
+    .btn-outline:hover { background: rgba(201,168,76,.1); }
+    .features { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .feature-item {
+      background: rgba(255,255,255,.03);
+      border-radius: 6px;
+      padding: 16px;
+      text-align: center;
+    }
+    .feature-item .icon { font-size: 28px; margin-bottom: 6px; }
+    .feature-item .label { font-size: 12px; color: #8899aa; }
+    @media (max-width: 480px) {
+      .features { grid-template-columns: 1fr; }
+      .container { padding: 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="container">
+    <div class="header">
+      <h1>⛏️ 像素矿工</h1>
+      <p>挖矿挂机微信小游戏</p>
+    </div>
+
+    <div class="card" style="text-align:center;">
+      <div style="font-size:80px;margin-bottom:16px;">⛏️</div>
+      <p style="margin-bottom:16px;">这是一款 <strong>微信小游戏</strong>，基于 Canvas 2D 开发，使用放置挂机玩法。</p>
+      <p style="font-size:13px;color:#667788;">请在微信中搜索或扫码体验</p>
+      <div style="margin-top:20px;">
+        <a href="https://github.com/Lemonpoi/minigame-1" target="_blank" class="btn btn-primary">📂 查看源码</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🎮 游戏特色</h2>
+      <div class="features">
+        <div class="feature-item"><div class="icon">⛏️</div><div class="label">自动挖矿</div></div>
+        <div class="feature-item"><div class="icon">⬆️</div><div class="label">升级系统</div></div>
+        <div class="feature-item"><div class="icon">🗺️</div><div class="label">9 层矿层</div></div>
+        <div class="feature-item"><div class="icon">🛒</div><div class="label">皮肤商城</div></div>
+        <div class="feature-item"><div class="icon">⏱️</div><div class="label">离线收益</div></div>
+        <div class="feature-item"><div class="icon">✨</div><div class="label">萤火虫 Buff</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📋 游戏说明</h2>
+      <ul>
+        <li>💰 挖矿获得金币，升级 <span>镐子</span>、<span>速度</span>、<span>收益倍率</span></li>
+        <li>🗺️ 解锁 <span>9 个矿层</span>，越深产出越高</li>
+        <li>💎 收集钻石，在 <span>商城</span> 购买角色/镐子皮肤</li>
+        <li>⏱️ 关闭游戏后 <span>离线收益</span> 持续累积</li>
+        <li>✨ 点击 <span>萤火虫</span> 获得随机增益 Buff</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🛠 技术栈</h2>
+      <div style="margin-top:8px;">
+        <span class="badge badge-wx">微信小游戏</span>
+        <span class="badge badge-gold">Canvas 2D</span>
+        <span class="badge badge-gold">Web Audio API</span>
+        <span class="badge badge-gold">纯 JavaScript</span>
+      </div>
+    </div>
+
+    <div style="text-align:center;padding:24px 0;">
+      <a href="https://github.com/Lemonpoi/minigame-1" target="_blank" class="btn btn-outline">📂 GitHub 仓库</a>
+      <a href="https://github.com/Lemonpoi" target="_blank" class="btn btn-outline">👤 作者主页</a>
+    </div>
+
+    <div style="text-align:center;padding:16px 0;color:#667788;font-size:12px;">
+      🏝️ Lemonpoi's Island &copy; 2026
+    </div>
+  </div>
+</body>
+</html>
